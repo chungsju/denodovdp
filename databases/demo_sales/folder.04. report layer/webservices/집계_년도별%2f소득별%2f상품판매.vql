@@ -15,7 +15,6 @@
             ib_upper_bound : 'long', 
             ib_lower_bound : 'long', 
             "I_ITEM_DESC" : 'text', 
-            "I_ITEM_ID" : 'text', 
             total_sales_price : 'decimal'
         ),
         VIEW "집계_프로모션별/상품판매DW" FIELDS (
