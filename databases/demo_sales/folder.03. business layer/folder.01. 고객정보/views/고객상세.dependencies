@@ -1,0 +1,16 @@
+﻿*/databases/demo_sales/folder.03. business layer/03. business layer.vql
+1/databases/demo_sales/folder.03. business layer/folder.01. 고객정보/01. 고객정보.vql
+1/tags/customtag.vql
+1/tags/개인민감정보.vql
+*/databases/demo_sales/folder.02. base layer/02. base layer.vql
+*/databases/demo_sales/folder.02. base layer/folder.02. crm/02. crm.vql
+*/tags/개인민감정보.vql
+*/tags/customtag.vql
+*/databases/demo_sales/folder.01. connection layer/01. connection layer.vql
+*/databases/demo_sales/folder.01. connection layer/folder.02. crm/02. crm.vql
+*/databases/demo_sales/folder.01. connection layer/folder.02. crm/datasources/jdbc/ds_crm.vql
+1/databases/demo_sales/folder.02. base layer/folder.02. crm/views/customer.vql
+*/databases/demo_sales/folder.02. base layer/folder.02. crm/views/customer_address.vql
+1/databases/demo_sales/folder.02. base layer/folder.02. crm/views/i_customer_address_sheet.vql
+*/databases/demo_sales/folder.02. base layer/folder.02. crm/views/customer.vql
+*/databases/demo_sales/folder.02. base layer/folder.02. crm/views/i_customer_address_sheet.vql

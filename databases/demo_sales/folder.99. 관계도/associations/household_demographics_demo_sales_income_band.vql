@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION household_demographics_demo_sales_income_band REFERENTIAL CONSTRAINT 
+FOLDER = '/99. 관계도'
+    ENDPOINT income_band household_demographics PRINCIPAL (0,1)
+    ENDPOINT household_demographics income_band (0,1)
+    ADD MAPPING hd_income_band_sk=ib_income_band_sk;
+
+ALTER ASSOCIATION household_demographics_demo_sales_income_band
+ LAYOUT (household_demographics = [10, 10, 200, 200], income_band = [349, 28, 200, 200]);
+

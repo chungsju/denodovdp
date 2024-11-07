@@ -1,0 +1,10 @@
+﻿1/databases/demo_sales/folder.99. 관계도/99. 관계도.vql
+*/databases/demo_sales/folder.02. base layer/02. base layer.vql
+*/databases/demo_sales/folder.02. base layer/folder.02. crm/02. crm.vql
+*/tags/개인민감정보.vql
+*/tags/customtag.vql
+*/databases/demo_sales/folder.01. connection layer/01. connection layer.vql
+*/databases/demo_sales/folder.01. connection layer/folder.02. crm/02. crm.vql
+*/databases/demo_sales/folder.01. connection layer/folder.02. crm/datasources/jdbc/ds_crm.vql
+1/databases/demo_sales/folder.02. base layer/folder.02. crm/views/customer.vql
+1/databases/demo_sales/folder.02. base layer/folder.02. crm/views/household_demographics.vql

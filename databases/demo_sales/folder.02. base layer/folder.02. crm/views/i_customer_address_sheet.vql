@@ -1,0 +1,34 @@
+﻿CREATE OR REPLACE INTERFACE VIEW "i_Customer_Address_Sheet" (
+        ca_address_sk:decimal,
+        ca_address_id:text,
+        ca_street_number:decimal TAGS ("개인민감정보"),
+        ca_street_name:text TAGS ("개인민감정보"),
+        ca_street_type:text TAGS ("개인민감정보"),
+        ca_suite_number:text TAGS ("개인민감정보"),
+        ca_city:text,
+        ca_county:text,
+        ca_state:text,
+        ca_zip:decimal (description = '우편번호'),
+        ca_country:text,
+        ca_gmt_offset:decimal,
+        ca_location_type:text,
+        ca_region:text
+    )
+    SET IMPLEMENTATION customer_address(
+        ca_address_sk = ca_address_sk,
+        ca_address_id = ca_address_id,
+        ca_street_number = cast(ca_street_number AS DECIMAL),
+        ca_street_name = ca_street_name,
+        ca_street_type = ca_street_type,
+        ca_suite_number = ca_suite_number,
+        ca_city = ca_city,
+        ca_county = ca_county,
+        ca_state = ca_state,
+        ca_zip = cast(ca_zip AS DECIMAL),
+        ca_country = ca_country,
+        ca_gmt_offset = ca_gmt_offset,
+        ca_location_type = ca_location_type,
+        ca_region = ca_region    
+)
+    FOLDER = '/02. base layer/02. crm';
+

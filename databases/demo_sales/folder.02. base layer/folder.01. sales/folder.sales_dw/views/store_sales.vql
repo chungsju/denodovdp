@@ -1,0 +1,93 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC "STORE_SALES"
+    FOLDER = '/02. base layer/01. sales/sales_dw'
+    DATASOURCENAME="DS_SalesDW"
+    SCHEMANAME='${databases.demo_sales.folder.02.. base layer.folder.01.. sales.folder.sales_dw.views.jdbc.store_sales.SCHEMANAME}' 
+    RELATIONNAME='STORE_SALES' 
+    OUTPUTSCHEMA (
+        "SS_SOLD_DATE_SK" = 'SS_SOLD_DATE_SK' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='판매가 이루어진 날짜에 대한 고유 식별자', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "SS_SOLD_TIME_SK" = 'SS_SOLD_TIME_SK' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='판매가 이루어진 시간에 대한 고유 식별자', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "SS_ITEM_SK" = 'SS_ITEM_SK' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='판매된 항목에 대한 고유 식별자', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "SS_CUSTOMER_SK" = 'SS_CUSTOMER_SK' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='구매한 고객에 대한 고유 식별자', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "SS_CDEMO_SK" = 'SS_CDEMO_SK' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='고객 인구 통계에 대한 고유 식별자', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "SS_HDEMO_SK" = 'SS_HDEMO_SK' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='가구 인구 통계에 대한 고유 식별자', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "SS_ADDR_SK" = 'SS_ADDR_SK' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='고객 주소에 대한 고유 식별자', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "SS_STORE_SK" = 'SS_STORE_SK' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='판매가 이루어진 매장에 대한 고유 식별자', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "SS_PROMO_SK" = 'SS_PROMO_SK' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='적용된 프로모션에 대한 고유 식별자', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "SS_TICKET_NUMBER" = 'SS_TICKET_NUMBER' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='판매 거래에 대한 고유 식별자(티켓 번호)', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "SS_QUANTITY" = 'SS_QUANTITY' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='판매된 항목의 수량', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "SS_WHOLESALE_COST" = 'SS_WHOLESALE_COST' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='20', sourcetyperadix='10', sourcetypesize='38', description='항목의 도매 가격', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "SS_LIST_PRICE" = 'SS_LIST_PRICE' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='20', sourcetyperadix='10', sourcetypesize='38', description='항목의 정가', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "SS_SALES_PRICE" = 'SS_SALES_PRICE' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='20', sourcetyperadix='10', sourcetypesize='38', description='항목의 실제 판매 가격', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "SS_EXT_DISCOUNT_AMOUNT" = 'SS_EXT_DISCOUNT_AMOUNT' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='20', sourcetyperadix='10', sourcetypesize='38', description='할인 금액의 총합', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "SS_EXT_SALES_PRICE" = 'SS_EXT_SALES_PRICE' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='20', sourcetyperadix='10', sourcetypesize='38', description='판매 가격의 총합', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "SS_EXT_WHOLESALE_COST" = 'SS_EXT_WHOLESALE_COST' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='20', sourcetyperadix='10', sourcetypesize='38', description='도매 가격의 총합', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "SS_EXT_LIST_PRICE" = 'SS_EXT_LIST_PRICE' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='20', sourcetyperadix='10', sourcetypesize='38', description='정가의 총합', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "SS_EXT_TAX" = 'SS_EXT_TAX' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='20', sourcetyperadix='10', sourcetypesize='38', description='부가세의 총합', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "SS_COUPON_AMT" = 'SS_COUPON_AMT' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='20', sourcetyperadix='10', sourcetypesize='38', description='쿠폰 사용 금액', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "SS_NET_PAID" = 'SS_NET_PAID' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='20', sourcetyperadix='10', sourcetypesize='38', description='세금을 제외한 실 결제 금액', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "SS_NET_PAID_INC_TAX" = 'SS_NET_PAID_INC_TAX' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='20', sourcetyperadix='10', sourcetypesize='38', description='세금을 포함한 실 결제 금액', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "SS_NET_PROVIT" = 'SS_NET_PROVIT' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='20', sourcetyperadix='10', sourcetypesize='38', description='순 이익', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE "STORE_SALES" I18N us_pst (
+        "SS_SOLD_DATE_SK":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = '판매가 이루어진 날짜에 대한 고유 식별자'),
+        "SS_SOLD_TIME_SK":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = '판매가 이루어진 시간에 대한 고유 식별자'),
+        "SS_ITEM_SK":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = '판매된 항목에 대한 고유 식별자'),
+        "SS_CUSTOMER_SK":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = '구매한 고객에 대한 고유 식별자'),
+        "SS_CDEMO_SK":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = '고객 인구 통계에 대한 고유 식별자'),
+        "SS_HDEMO_SK":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = '가구 인구 통계에 대한 고유 식별자'),
+        "SS_ADDR_SK":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = '고객 주소에 대한 고유 식별자'),
+        "SS_STORE_SK":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = '판매가 이루어진 매장에 대한 고유 식별자'),
+        "SS_PROMO_SK":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = '적용된 프로모션에 대한 고유 식별자'),
+        "SS_TICKET_NUMBER":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = '판매 거래에 대한 고유 식별자(티켓 번호)'),
+        "SS_QUANTITY":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = '판매된 항목의 수량'),
+        "SS_WHOLESALE_COST":decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '20', sourcetypesize = '38', description = '항목의 도매 가격'),
+        "SS_LIST_PRICE":decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '20', sourcetypesize = '38', description = '항목의 정가'),
+        "SS_SALES_PRICE":decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '20', sourcetypesize = '38', description = '항목의 실제 판매 가격'),
+        "SS_EXT_DISCOUNT_AMOUNT":decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '20', sourcetypesize = '38', description = '할인 금액의 총합'),
+        "SS_EXT_SALES_PRICE":decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '20', sourcetypesize = '38', description = '판매 가격의 총합'),
+        "SS_EXT_WHOLESALE_COST":decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '20', sourcetypesize = '38', description = '도매 가격의 총합'),
+        "SS_EXT_LIST_PRICE":decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '20', sourcetypesize = '38', description = '정가의 총합'),
+        "SS_EXT_TAX":decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '20', sourcetypesize = '38', description = '부가세의 총합'),
+        "SS_COUPON_AMT":decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '20', sourcetypesize = '38', description = '쿠폰 사용 금액'),
+        "SS_NET_PAID":decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '20', sourcetypesize = '38', description = '세금을 제외한 실 결제 금액'),
+        "SS_NET_PAID_INC_TAX":decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '20', sourcetypesize = '38', description = '세금을 포함한 실 결제 금액'),
+        "SS_NET_PROVIT":decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '20', sourcetypesize = '38', description = '순 이익')
+    )
+    FOLDER = '/02. base layer/01. sales/sales_dw'
+    DESCRIPTION = '2017년 이후의 상점 판매 '
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD "STORE_SALES"(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD "SS_SOLD_DATE_SK" (any) OPT ANY
+             ADD "SS_SOLD_TIME_SK" (any) OPT ANY
+             ADD "SS_ITEM_SK" (any) OPT ANY
+             ADD "SS_CUSTOMER_SK" (any) OPT ANY
+             ADD "SS_CDEMO_SK" (any) OPT ANY
+             ADD "SS_HDEMO_SK" (any) OPT ANY
+             ADD "SS_ADDR_SK" (any) OPT ANY
+             ADD "SS_STORE_SK" (any) OPT ANY
+             ADD "SS_PROMO_SK" (any) OPT ANY
+             ADD "SS_TICKET_NUMBER" (any) OPT ANY
+             ADD "SS_QUANTITY" (any) OPT ANY
+             ADD "SS_WHOLESALE_COST" (any) OPT ANY
+             ADD "SS_LIST_PRICE" (any) OPT ANY
+             ADD "SS_SALES_PRICE" (any) OPT ANY
+             ADD "SS_EXT_DISCOUNT_AMOUNT" (any) OPT ANY
+             ADD "SS_EXT_SALES_PRICE" (any) OPT ANY
+             ADD "SS_EXT_WHOLESALE_COST" (any) OPT ANY
+             ADD "SS_EXT_LIST_PRICE" (any) OPT ANY
+             ADD "SS_EXT_TAX" (any) OPT ANY
+             ADD "SS_COUPON_AMT" (any) OPT ANY
+             ADD "SS_NET_PAID" (any) OPT ANY
+             ADD "SS_NET_PAID_INC_TAX" (any) OPT ANY
+             ADD "SS_NET_PROVIT" (any) OPT ANY
+        )
+        OUTPUTLIST ("SS_ADDR_SK", "SS_CDEMO_SK", "SS_COUPON_AMT", "SS_CUSTOMER_SK", "SS_EXT_DISCOUNT_AMOUNT", "SS_EXT_LIST_PRICE", "SS_EXT_SALES_PRICE", "SS_EXT_TAX", "SS_EXT_WHOLESALE_COST", "SS_HDEMO_SK", "SS_ITEM_SK", "SS_LIST_PRICE", "SS_NET_PAID", "SS_NET_PAID_INC_TAX", "SS_NET_PROVIT", "SS_PROMO_SK", "SS_QUANTITY", "SS_SALES_PRICE", "SS_SOLD_DATE_SK", "SS_SOLD_TIME_SK", "SS_STORE_SK", "SS_TICKET_NUMBER", "SS_WHOLESALE_COST"
+        )
+        WRAPPER (jdbc "STORE_SALES")
+    );
+

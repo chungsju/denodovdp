@@ -1,0 +1,40 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC household_demographics
+    FOLDER = '/02. base layer/02. crm'
+    DATASOURCENAME="DS_CRM"
+    CATALOGNAME='${databases.demo_sales.folder.02.. base layer.folder.02.. crm.views.jdbc.household_demographics.CATALOGNAME}' 
+    SCHEMANAME='${databases.demo_sales.folder.02.. base layer.folder.02.. crm.views.jdbc.household_demographics.SCHEMANAME}' 
+    RELATIONNAME='household_demographics' 
+    OUTPUTSCHEMA (
+        hd_demo_sk = 'hd_demo_sk' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', description='Surrogate key (unique identifier) for the household demographic data', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        hd_income_band_sk = 'hd_income_band_sk' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', description='Foreign key to the income band', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        hd_buy_potential = 'hd_buy_potential' :'java.lang.String' (OPT) (sourcetypesize='4000', description='Purchase potential of the household', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        hd_dep_count = 'hd_dep_count' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', description='Number of dependents in the household', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        hd_vehicle_count = 'hd_vehicle_count' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', description='Number of vehicles owned by the household', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE household_demographics I18N us_pst (
+        hd_demo_sk:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Surrogate key (unique identifier) for the household demographic data'),
+        hd_income_band_sk:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Foreign key to the income band'),
+        hd_buy_potential:text (sourcetypeid = '12', sourcetypesize = '4000', description = 'Purchase potential of the household'),
+        hd_dep_count:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Number of dependents in the household'),
+        hd_vehicle_count:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Number of vehicles owned by the household')
+    )
+    FOLDER = '/02. base layer/02. crm'
+    DESCRIPTION = '가구 인구 통계'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD household_demographics(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD hd_demo_sk (any) OPT ANY
+             ADD hd_income_band_sk (any) OPT ANY
+             ADD hd_buy_potential (any) OPT ANY
+             ADD hd_dep_count (any) OPT ANY
+             ADD hd_vehicle_count (any) OPT ANY
+        )
+        OUTPUTLIST (hd_buy_potential, hd_demo_sk, hd_dep_count, hd_income_band_sk, hd_vehicle_count
+        )
+        WRAPPER (jdbc household_demographics)
+    );
+

@@ -1,0 +1,12 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE CUSTOM "DS_GoogleSheet"
+    FOLDER = '/01. connection layer/02. crm'
+    CLASSNAME='com.denodo.connect.google.sheets.wrapper.GoogleSheetsWrapper'
+    JARS 'denodo-google-sheets-custom-wrapper'
+    PARAMETERS (
+      'Route' = ROUTE HTTP 'http.ApacheHttpClientConnection,120000' GET '${databases.demo_sales.folder.01.. connection layer.folder.02.. crm.datasources.custom.ds_googlesheet.Route.ROUTE.HTTP.URL}'
+        CHECKCERTIFICATES
+        AUTHENTICATION OFF
+        PROXY OFF
+    );
+

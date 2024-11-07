@@ -1,0 +1,67 @@
+﻿CREATE OR REPLACE WRAPPER CUSTOM "DS_Cusatomer_Address_Sheet"
+    FOLDER = '/02. base layer/02. crm'
+    DATASOURCENAME="DS_GoogleSheet"
+    PARAMETERS (
+      'Sheet Name' = '고객주소',
+      'Has Headers' = true
+    )
+    OUTPUTSCHEMA (
+        ca_address_sk = 'ca_address_sk' : 'java.math.BigDecimal' (OPT) (column_id='A', google_pattern='General', final_pattern='#,##0.##', column_name='ca_address_sk', column_name_set_manually='false', sourcetypeid='2', google_type='number', final_type='number')  SORTABLE,
+        ca_address_id = 'ca_address_id' : 'java.lang.String' (OPT) (column_id='B', column_name='ca_address_id', column_name_set_manually='false', sourcetypeid='12', google_type='string', final_type='text')  SORTABLE,
+        ca_street_number = 'ca_street_number' : 'java.math.BigDecimal' (OPT) (column_id='C', google_pattern='General', final_pattern='#,##0.##', column_name='ca_street_number', column_name_set_manually='false', sourcetypeid='2', google_type='number', final_type='number')  SORTABLE,
+        ca_street_name = 'ca_street_name' : 'java.lang.String' (OPT) (column_id='D', column_name='ca_street_name', column_name_set_manually='false', sourcetypeid='12', google_type='string', final_type='text')  SORTABLE,
+        ca_street_type = 'ca_street_type' : 'java.lang.String' (OPT) (column_id='E', column_name='ca_street_type', column_name_set_manually='false', sourcetypeid='12', google_type='string', final_type='text')  SORTABLE,
+        ca_suite_number = 'ca_suite_number' : 'java.lang.String' (OPT) (column_id='F', column_name='ca_suite_number', column_name_set_manually='false', sourcetypeid='12', google_type='string', final_type='text')  SORTABLE,
+        ca_city = 'ca_city' : 'java.lang.String' (OPT) (column_id='G', column_name='ca_city', column_name_set_manually='false', sourcetypeid='12', google_type='string', final_type='text')  SORTABLE,
+        ca_county = 'ca_county' : 'java.lang.String' (OPT) (column_id='H', column_name='ca_county', column_name_set_manually='false', sourcetypeid='12', google_type='string', final_type='text')  SORTABLE,
+        ca_state = 'ca_state' : 'java.lang.String' (OPT) (column_id='I', column_name='ca_state', column_name_set_manually='false', sourcetypeid='12', google_type='string', final_type='text')  SORTABLE,
+        ca_zip = 'ca_zip' : 'java.math.BigDecimal' (OPT) (column_id='J', google_pattern='General', final_pattern='#,##0.##', column_name='ca_zip', column_name_set_manually='false', sourcetypeid='2', google_type='number', final_type='number')  SORTABLE,
+        ca_country = 'ca_country' : 'java.lang.String' (OPT) (column_id='K', column_name='ca_country', column_name_set_manually='false', sourcetypeid='12', google_type='string', final_type='text')  SORTABLE,
+        ca_gmt_offset = 'ca_gmt_offset' : 'java.math.BigDecimal' (OPT) (column_id='L', google_pattern='General', final_pattern='#,##0.##', column_name='ca_gmt_offset', column_name_set_manually='false', sourcetypeid='2', google_type='number', final_type='number')  SORTABLE,
+        ca_location_type = 'ca_location_type' : 'java.lang.String' (OPT) (column_id='M', column_name='ca_location_type', column_name_set_manually='false', sourcetypeid='12', google_type='string', final_type='text')  SORTABLE,
+        ca_region = 'ca_region' : 'java.lang.String' (OPT) (column_id='N', column_name='ca_region', column_name_set_manually='false', sourcetypeid='12', google_type='string', final_type='text')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE "Customer_Address_Sheet" I18N us_pst (
+        ca_address_sk:decimal (column_id = 'A', google_pattern = 'General', final_pattern = '#,##0.##', column_name = 'ca_address_sk', column_name_set_manually = 'false', google_type = 'number', final_type = 'number', sourcetypeid = '2'),
+        ca_address_id:text (column_id = 'B', column_name = 'ca_address_id', column_name_set_manually = 'false', google_type = 'string', final_type = 'text', sourcetypeid = '12'),
+        ca_street_number:decimal (column_id = 'C', google_pattern = 'General', final_pattern = '#,##0.##', column_name = 'ca_street_number', column_name_set_manually = 'false', google_type = 'number', final_type = 'number', sourcetypeid = '2') TAGS ("개인민감정보"),
+        ca_street_name:text (column_id = 'D', column_name = 'ca_street_name', column_name_set_manually = 'false', google_type = 'string', final_type = 'text', sourcetypeid = '12') TAGS ("개인민감정보"),
+        ca_street_type:text (column_id = 'E', column_name = 'ca_street_type', column_name_set_manually = 'false', google_type = 'string', final_type = 'text', sourcetypeid = '12') TAGS ("개인민감정보"),
+        ca_suite_number:text (column_id = 'F', column_name = 'ca_suite_number', column_name_set_manually = 'false', google_type = 'string', final_type = 'text', sourcetypeid = '12') TAGS ("개인민감정보"),
+        ca_city:text (column_id = 'G', column_name = 'ca_city', column_name_set_manually = 'false', google_type = 'string', final_type = 'text', sourcetypeid = '12', description = '도시이름'),
+        ca_county:text (column_id = 'H', column_name = 'ca_county', column_name_set_manually = 'false', google_type = 'string', final_type = 'text', sourcetypeid = '12', description = '국가코드'),
+        ca_state:text (column_id = 'I', column_name = 'ca_state', column_name_set_manually = 'false', google_type = 'string', final_type = 'text', sourcetypeid = '12'),
+        ca_zip:decimal (column_id = 'J', google_pattern = 'General', final_pattern = '#,##0.##', column_name = 'ca_zip', column_name_set_manually = 'false', google_type = 'number', final_type = 'number', sourcetypeid = '2', description = '우편번호'),
+        ca_country:text (column_id = 'K', column_name = 'ca_country', column_name_set_manually = 'false', google_type = 'string', final_type = 'text', sourcetypeid = '12'),
+        ca_gmt_offset:decimal (column_id = 'L', google_pattern = 'General', final_pattern = '#,##0.##', column_name = 'ca_gmt_offset', column_name_set_manually = 'false', google_type = 'number', final_type = 'number', sourcetypeid = '2'),
+        ca_location_type:text (column_id = 'M', column_name = 'ca_location_type', column_name_set_manually = 'false', google_type = 'string', final_type = 'text', sourcetypeid = '12'),
+        ca_region:text (column_id = 'N', column_name = 'ca_region', column_name_set_manually = 'false', google_type = 'string', final_type = 'text', sourcetypeid = '12')
+    )
+    FOLDER = '/02. base layer/02. crm'
+    DESCRIPTION = '고객 주소 정보'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD "DS_Cusatomer_Address_Sheet"(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD ca_address_sk (any) OPT ANY
+             ADD ca_address_id (any) OPT ANY
+             ADD ca_street_number (any) OPT ANY
+             ADD ca_street_name (any) OPT ANY
+             ADD ca_street_type (any) OPT ANY
+             ADD ca_suite_number (any) OPT ANY
+             ADD ca_city (any) OPT ANY
+             ADD ca_county (any) OPT ANY
+             ADD ca_state (any) OPT ANY
+             ADD ca_zip (any) OPT ANY
+             ADD ca_country (any) OPT ANY
+             ADD ca_gmt_offset (any) OPT ANY
+             ADD ca_location_type (any) OPT ANY
+             ADD ca_region (any) OPT ANY
+        )
+        OUTPUTLIST (ca_address_id, ca_address_sk, ca_city, ca_country, ca_county, ca_gmt_offset, ca_location_type, ca_region, ca_state, ca_street_name, ca_street_number, ca_street_type, ca_suite_number, ca_zip
+        )
+        WRAPPER (custom "DS_Cusatomer_Address_Sheet")
+    );
+

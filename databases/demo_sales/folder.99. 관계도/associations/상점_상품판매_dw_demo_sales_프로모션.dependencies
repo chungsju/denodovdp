@@ -1,0 +1,18 @@
+﻿1/databases/demo_sales/folder.99. 관계도/99. 관계도.vql
+*/databases/demo_sales/folder.03. business layer/03. business layer.vql
+*/databases/demo_sales/folder.03. business layer/folder.02. 상점 판매/02. 상점 판매.vql
+*/tags/customtag.vql
+*/databases/demo_sales/folder.02. base layer/02. base layer.vql
+*/databases/demo_sales/folder.02. base layer/folder.01. sales/01. sales.vql
+*/databases/demo_sales/folder.02. base layer/folder.01. sales/folder.sales_dw/sales_dw.vql
+*/databases/demo_sales/folder.01. connection layer/01. connection layer.vql
+*/databases/demo_sales/folder.01. connection layer/folder.01. sales/01. sales.vql
+*/databases/demo_sales/folder.01. connection layer/folder.01. sales/datasources/jdbc/ds_salesdw.vql
+*/databases/demo_sales/folder.02. base layer/folder.01. sales/folder.sales_dw/views/store_sales.vql
+*/databases/demo_sales/folder.02. base layer/folder.01. sales/folder.sales_dw/views/date_dim.vql
+*/databases/demo_sales/folder.02. base layer/folder.01. sales/folder.sales_dw/views/item.vql
+1/databases/demo_sales/folder.03. business layer/folder.02. 상점 판매/views/상점_상품판매_dw.vql
+*/databases/demo_sales/folder.03. business layer/folder.03. 프로모션/03. 프로모션.vql
+*/databases/demo_sales/folder.02. base layer/folder.03. marketing/03. marketing.vql
+*/databases/demo_sales/folder.02. base layer/folder.03. marketing/views/marketing_promotions.vql
+1/databases/demo_sales/folder.03. business layer/folder.03. 프로모션/views/프로모션.vql

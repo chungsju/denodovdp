@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION "STORE_SALES_demo_sales_customer" REFERENTIAL CONSTRAINT 
+FOLDER = '/99. 관계도'
+    ENDPOINT customer "STORE_SALES" PRINCIPAL (0,1)
+    ENDPOINT "STORE_SALES" customer (0,1)
+    ADD MAPPING "SS_CUSTOMER_SK"=c_customer_sk;
+
+ALTER ASSOCIATION "STORE_SALES_demo_sales_customer"
+ LAYOUT ("STORE_SALES" = [10, 10, 200, 200], customer = [369, 27, 200, 200]);
+

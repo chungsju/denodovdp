@@ -1,0 +1,7 @@
+﻿*/databases/demo_sales/folder.02. base layer/02. base layer.vql
+1/databases/demo_sales/folder.02. base layer/folder.02. crm/02. crm.vql
+1/tags/개인민감정보.vql
+1/tags/customtag.vql
+*/databases/demo_sales/folder.01. connection layer/01. connection layer.vql
+*/databases/demo_sales/folder.01. connection layer/folder.02. crm/02. crm.vql
+1/databases/demo_sales/folder.01. connection layer/folder.02. crm/datasources/jdbc/ds_crm.vql

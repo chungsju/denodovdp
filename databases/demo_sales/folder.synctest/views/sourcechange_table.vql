@@ -1,0 +1,32 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC "SOURCECHANGE_TABLE"
+    FOLDER = '/synctest'
+    DATASOURCENAME="DS_SalesDW"
+    SCHEMANAME='${databases.demo_sales.folder.synctest.views.jdbc.sourcechange_table.SCHEMANAME}' 
+    RELATIONNAME='SOURCECHANGE_TABLE' 
+    OUTPUTSCHEMA (
+        "COLUMN1" = 'COLUMN1' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        "COLUMN2" = 'COLUMN2' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        "COLUMN3" = 'COLUMN3' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE "SOURCECHANGE_TABLE" I18N kr (
+        "COLUMN1":text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '100'),
+        "COLUMN2":text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '100'),
+        "COLUMN3":text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '100')
+    )
+    FOLDER = '/synctest'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD "SOURCECHANGE_TABLE"(
+        I18N kr
+        CONSTRAINTS (
+             ADD "COLUMN1" (any) OPT ANY
+             ADD "COLUMN2" (any) OPT ANY
+             ADD "COLUMN3" (any) OPT ANY
+        )
+        OUTPUTLIST ("COLUMN1", "COLUMN2", "COLUMN3"
+        )
+        WRAPPER (jdbc "SOURCECHANGE_TABLE")
+    );
+

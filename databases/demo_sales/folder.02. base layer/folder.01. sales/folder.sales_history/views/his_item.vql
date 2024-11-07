@@ -1,0 +1,89 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC "HIS_ITEM"
+    FOLDER = '/02. base layer/01. sales/sales_history'
+    DATASOURCENAME="DS_Sales_History"
+    SCHEMANAME='${databases.demo_sales.folder.02.. base layer.folder.01.. sales.folder.sales_history.views.jdbc.his_item.SCHEMANAME}' 
+    RELATIONNAME='ITEM' 
+    OUTPUTSCHEMA (
+        "I_ITEM_SK" = 'I_ITEM_SK' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='항목에 대한 고유 식별자', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "I_ITEM_ID" = 'I_ITEM_ID' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', description='항목에 대한 고유 문자열 식별자', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        "I_REC_START_DATE" = 'I_REC_START_DATE' :'java.time.OffsetDateTime' (OPT) (sourcetypedecimals='9', sourcetyperadix='10', sourcetypesize='13', description='레코드의 유효 시작 날짜', sourcetypeid='-101', sourcetypename='TIMESTAMP(9) WITH TIME ZONE')  SORTABLE,
+        "I_REC_END_DATE" = 'I_REC_END_DATE' :'java.time.OffsetDateTime' (OPT) (sourcetypedecimals='9', sourcetyperadix='10', sourcetypesize='13', description='레코드의 유효 종료 날짜', sourcetypeid='-101', sourcetypename='TIMESTAMP(9) WITH TIME ZONE')  SORTABLE,
+        "I_ITEM_DESC" = 'I_ITEM_DESC' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', description='항목에 대한 설명', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        "I_CURRENT_PRICE" = 'I_CURRENT_PRICE' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='20', sourcetyperadix='10', sourcetypesize='38', description='항목의 현재 판매 가격', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "I_WHOLESALE_COST" = 'I_WHOLESALE_COST' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='20', sourcetyperadix='10', sourcetypesize='38', description='항목의 도매 가격', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "I_BRAND_ID" = 'I_BRAND_ID' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='20', sourcetyperadix='10', sourcetypesize='38', description='브랜드에 대한 고유 식별자', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "I_BRAND" = 'I_BRAND' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', description='브랜드 이름', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        "I_CLASS_ID" = 'I_CLASS_ID' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='클래스에 대한 고유 식별자', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "I_CLASS" = 'I_CLASS' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', description='클래스 이름', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        "I_CATEGORY_ID" = 'I_CATEGORY_ID' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='카테고리에 대한 고유 식별자', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "I_CATEGORY" = 'I_CATEGORY' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', description='카테고리 이름', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        "I_MANUFACT_ID" = 'I_MANUFACT_ID' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='제조사에 대한 고유 식별자', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "I_MANUFACT" = 'I_MANUFACT' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', description='제조사 이름', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        "I_SIZE" = 'I_SIZE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', description='항목의 크기나 용량', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        "I_FORMULATION" = 'I_FORMULATION' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', description='항목의 조성이나 형식', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        "I_COLOR" = 'I_COLOR' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', description='항목의 색상', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        "I_UNITS" = 'I_UNITS' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', description='항목의 판매 단위', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        "I_CONTAINER" = 'I_CONTAINER' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', description='항목이 담긴 용기 유형', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        "I_MANAGER_ID" = 'I_MANAGER_ID' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='매니저에 대한 고유 식별자', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "I_PRODUCT_NAME" = 'I_PRODUCT_NAME' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', description='항목의 이름', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE "HIS_ITEM" I18N us_pst (
+        "I_ITEM_SK":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = '항목에 대한 고유 식별자'),
+        "I_ITEM_ID":text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000', description = '항목에 대한 고유 문자열 식별자'),
+        "I_REC_START_DATE":timestamptz (sourcetypeid = '2014', sourcetyperadix = '10', sourcetypedecimals = '9', sourcetypesize = '13', description = '레코드의 유효 시작 날짜'),
+        "I_REC_END_DATE":timestamptz (sourcetypeid = '2014', sourcetyperadix = '10', sourcetypedecimals = '9', sourcetypesize = '13', description = '레코드의 유효 종료 날짜'),
+        "I_ITEM_DESC":text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000', description = '항목에 대한 설명'),
+        "I_CURRENT_PRICE":decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '20', sourcetypesize = '38', description = '항목의 현재 판매 가격'),
+        "I_WHOLESALE_COST":decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '20', sourcetypesize = '38', description = '항목의 도매 가격'),
+        "I_BRAND_ID":decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '20', sourcetypesize = '38', description = '브랜드에 대한 고유 식별자'),
+        "I_BRAND":text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000', description = '브랜드 이름'),
+        "I_CLASS_ID":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = '클래스에 대한 고유 식별자'),
+        "I_CLASS":text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000', description = '클래스 이름'),
+        "I_CATEGORY_ID":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = '카테고리에 대한 고유 식별자'),
+        "I_CATEGORY":text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000', description = '카테고리 이름'),
+        "I_MANUFACT_ID":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = '제조사에 대한 고유 식별자'),
+        "I_MANUFACT":text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000', description = '제조사 이름'),
+        "I_SIZE":text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000', description = '항목의 크기나 용량'),
+        "I_FORMULATION":text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000', description = '항목의 조성이나 형식'),
+        "I_COLOR":text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000', description = '항목의 색상'),
+        "I_UNITS":text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000', description = '항목의 판매 단위'),
+        "I_CONTAINER":text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000', description = '항목이 담긴 용기 유형'),
+        "I_MANAGER_ID":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = '매니저에 대한 고유 식별자'),
+        "I_PRODUCT_NAME":text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000', description = '항목의 이름')
+    )
+    FOLDER = '/02. base layer/01. sales/sales_history'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD "HIS_ITEM"(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD "I_ITEM_SK" (any) OPT ANY
+             ADD "I_ITEM_ID" (any) OPT ANY
+             ADD "I_REC_START_DATE" (any) OPT ANY
+             ADD "I_REC_END_DATE" (any) OPT ANY
+             ADD "I_ITEM_DESC" (any) OPT ANY
+             ADD "I_CURRENT_PRICE" (any) OPT ANY
+             ADD "I_WHOLESALE_COST" (any) OPT ANY
+             ADD "I_BRAND_ID" (any) OPT ANY
+             ADD "I_BRAND" (any) OPT ANY
+             ADD "I_CLASS_ID" (any) OPT ANY
+             ADD "I_CLASS" (any) OPT ANY
+             ADD "I_CATEGORY_ID" (any) OPT ANY
+             ADD "I_CATEGORY" (any) OPT ANY
+             ADD "I_MANUFACT_ID" (any) OPT ANY
+             ADD "I_MANUFACT" (any) OPT ANY
+             ADD "I_SIZE" (any) OPT ANY
+             ADD "I_FORMULATION" (any) OPT ANY
+             ADD "I_COLOR" (any) OPT ANY
+             ADD "I_UNITS" (any) OPT ANY
+             ADD "I_CONTAINER" (any) OPT ANY
+             ADD "I_MANAGER_ID" (any) OPT ANY
+             ADD "I_PRODUCT_NAME" (any) OPT ANY
+        )
+        OUTPUTLIST ("I_BRAND", "I_BRAND_ID", "I_CATEGORY", "I_CATEGORY_ID", "I_CLASS", "I_CLASS_ID", "I_COLOR", "I_CONTAINER", "I_CURRENT_PRICE", "I_FORMULATION", "I_ITEM_DESC", "I_ITEM_ID", "I_ITEM_SK", "I_MANAGER_ID", "I_MANUFACT", "I_MANUFACT_ID", "I_PRODUCT_NAME", "I_REC_END_DATE", "I_REC_START_DATE", "I_SIZE", "I_UNITS", "I_WHOLESALE_COST"
+        )
+        WRAPPER (jdbc "HIS_ITEM")
+    );
+

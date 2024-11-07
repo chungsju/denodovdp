@@ -1,0 +1,6 @@
+﻿*/databases/demo_sales/folder.02. base layer/02. base layer.vql
+*/databases/demo_sales/folder.02. base layer/folder.01. sales/01. sales.vql
+1/databases/demo_sales/folder.02. base layer/folder.01. sales/folder.sales_history/sales_history.vql
+*/databases/demo_sales/folder.01. connection layer/01. connection layer.vql
+*/databases/demo_sales/folder.01. connection layer/folder.01. sales/01. sales.vql
+1/databases/demo_sales/folder.01. connection layer/folder.01. sales/datasources/jdbc/ds_sales_history.vql

@@ -1,0 +1,4 @@
+﻿1/databases/demo_sales/folder.synctest/synctest.vql
+*/databases/demo_sales/folder.01. connection layer/01. connection layer.vql
+*/databases/demo_sales/folder.01. connection layer/folder.01. sales/01. sales.vql
+1/databases/demo_sales/folder.01. connection layer/folder.01. sales/datasources/jdbc/ds_salesdw.vql

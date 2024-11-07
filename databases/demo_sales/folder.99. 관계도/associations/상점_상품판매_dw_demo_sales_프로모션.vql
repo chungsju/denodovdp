@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION "상점_상품판매_DW_demo_sales_프로모션" REFERENTIAL CONSTRAINT 
+FOLDER = '/99. 관계도'
+    ENDPOINT "프로모션" "상점_상품판매_DW" PRINCIPAL (1)
+    ENDPOINT "상점_상품판매_DW" "프로모션" (0,1)
+    ADD MAPPING "SS_PROMO_SK"=p_promo_sk;
+
+ALTER ASSOCIATION "상점_상품판매_DW_demo_sales_프로모션"
+ LAYOUT ("상점_상품판매_DW" = [10, 10, 200, 200], "프로모션" = [333, 76, 200, 200]);
+

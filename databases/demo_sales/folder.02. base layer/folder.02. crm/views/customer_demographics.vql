@@ -1,0 +1,52 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC customer_demographics
+    FOLDER = '/02. base layer/02. crm'
+    DATASOURCENAME="DS_CRM"
+    CATALOGNAME='${databases.demo_sales.folder.02.. base layer.folder.02.. crm.views.jdbc.customer_demographics.CATALOGNAME}' 
+    SCHEMANAME='${databases.demo_sales.folder.02.. base layer.folder.02.. crm.views.jdbc.customer_demographics.SCHEMANAME}' 
+    RELATIONNAME='customer_demographics' 
+    OUTPUTSCHEMA (
+        cd_demo_sk = 'cd_demo_sk' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', description='Surrogate key (unique identifier) for the demographic data', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        cd_gender = 'cd_gender' :'java.lang.String' (OPT) (sourcetypesize='4000', description='Gender of the customer', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        cd_marital_status = 'cd_marital_status' :'java.lang.String' (OPT) (sourcetypesize='4000', description='Marital status of the customer', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        cd_education_status = 'cd_education_status' :'java.lang.String' (OPT) (sourcetypesize='4000', description='Education status of the customer', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        cd_purchase_estimate = 'cd_purchase_estimate' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', description='Estimated purchase potential of the customer', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        cd_credit_rating = 'cd_credit_rating' :'java.lang.String' (OPT) (sourcetypesize='4000', description='Credit rating of the customer', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        cd_dep_count = 'cd_dep_count' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', description='Number of dependents supported by the customer', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        cd_dep_employed_count = 'cd_dep_employed_count' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', description='Number of dependents supported by the customer who are employed', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        cd_dep_college_count = 'cd_dep_college_count' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', description='Number of dependents supported by the customer who are attending college', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE customer_demographics I18N us_pst (
+        cd_demo_sk:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Surrogate key (unique identifier) for the demographic data'),
+        cd_gender:text (sourcetypeid = '12', sourcetypesize = '4000', description = 'Gender of the customer'),
+        cd_marital_status:text (sourcetypeid = '12', sourcetypesize = '4000', description = 'Marital status of the customer'),
+        cd_education_status:text (sourcetypeid = '12', sourcetypesize = '4000', description = 'Education status of the customer'),
+        cd_purchase_estimate:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Estimated purchase potential of the customer'),
+        cd_credit_rating:text (sourcetypeid = '12', sourcetypesize = '4000', description = 'Credit rating of the customer'),
+        cd_dep_count:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Number of dependents supported by the customer'),
+        cd_dep_employed_count:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Number of dependents supported by the customer who are employed'),
+        cd_dep_college_count:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Number of dependents supported by the customer who are attending college')
+    )
+    FOLDER = '/02. base layer/02. crm'
+    DESCRIPTION = '고객 인구통계'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD customer_demographics(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD cd_demo_sk (any) OPT ANY
+             ADD cd_gender (any) OPT ANY
+             ADD cd_marital_status (any) OPT ANY
+             ADD cd_education_status (any) OPT ANY
+             ADD cd_purchase_estimate (any) OPT ANY
+             ADD cd_credit_rating (any) OPT ANY
+             ADD cd_dep_count (any) OPT ANY
+             ADD cd_dep_employed_count (any) OPT ANY
+             ADD cd_dep_college_count (any) OPT ANY
+        )
+        OUTPUTLIST (cd_credit_rating, cd_demo_sk, cd_dep_college_count, cd_dep_count, cd_dep_employed_count, cd_education_status, cd_gender, cd_marital_status, cd_purchase_estimate
+        )
+        WRAPPER (jdbc customer_demographics)
+    );
+

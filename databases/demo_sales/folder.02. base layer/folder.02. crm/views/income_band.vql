@@ -1,0 +1,33 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC income_band
+    FOLDER = '/02. base layer/02. crm'
+    DATASOURCENAME="DS_CRM"
+    CATALOGNAME='${databases.demo_sales.folder.02.. base layer.folder.02.. crm.views.jdbc.income_band.CATALOGNAME}' 
+    SCHEMANAME='${databases.demo_sales.folder.02.. base layer.folder.02.. crm.views.jdbc.income_band.SCHEMANAME}' 
+    RELATIONNAME='income_band' 
+    OUTPUTSCHEMA (
+        ib_income_band_sk = 'ib_income_band_sk' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        ib_lower_bound = 'ib_lower_bound' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        ib_upper_bound = 'ib_upper_bound' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE income_band I18N us_pst (
+        ib_income_band_sk:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19'),
+        ib_lower_bound:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19'),
+        ib_upper_bound:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19')
+    )
+    FOLDER = '/02. base layer/02. crm'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD income_band(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD ib_income_band_sk (any) OPT ANY
+             ADD ib_lower_bound (any) OPT ANY
+             ADD ib_upper_bound (any) OPT ANY
+        )
+        OUTPUTLIST (ib_income_band_sk, ib_lower_bound, ib_upper_bound
+        )
+        WRAPPER (jdbc income_band)
+    );
+

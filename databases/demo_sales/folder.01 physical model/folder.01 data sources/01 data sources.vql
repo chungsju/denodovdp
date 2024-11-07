@@ -1,0 +1,2 @@
+﻿CREATE OR REPLACE FOLDER '/01 physical model/01 Data Sources' DESCRIPTION 'Folder for Datasources and Base Views.' ;
+

@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION "customer_demo_sales_Customer_Address_Sheet" REFERENTIAL CONSTRAINT 
+FOLDER = '/99. 관계도'
+    ENDPOINT "Customer_Address_Sheet" customer PRINCIPAL (0,1)
+    ENDPOINT customer "Customer_Address_Sheet" (0,1)
+    ADD MAPPING c_current_addr_sk=ca_address_sk;
+
+ALTER ASSOCIATION "customer_demo_sales_Customer_Address_Sheet"
+ LAYOUT (customer = [10, 10, 200, 200], "Customer_Address_Sheet" = [380, 26, 200, 200]);
+

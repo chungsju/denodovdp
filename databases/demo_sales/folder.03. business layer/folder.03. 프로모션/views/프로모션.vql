@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE VIEW "프로모션" FOLDER = '/03. business layer/03. 프로모션'
+    PRIMARY KEY ( 'p_promo_sk' ) AS SELECT "Marketing_Promotions".p_promo_sk AS p_promo_sk, "Marketing_Promotions".p_promo_id AS p_promo_id, "Marketing_Promotions".p_start_date_sk AS p_start_date_sk, "Marketing_Promotions".p_end_date_sk AS p_end_date_sk, "Marketing_Promotions".p_item_sk AS p_item_sk, "Marketing_Promotions".p_cost AS p_cost, "Marketing_Promotions".p_response_target AS p_response_target, "Marketing_Promotions".p_promo_name AS p_promo_name, "Marketing_Promotions".p_channel_dmail AS p_channel_dmail, "Marketing_Promotions".p_channel_email AS p_channel_email, "Marketing_Promotions".p_channel_catalog AS p_channel_catalog, "Marketing_Promotions".p_channel_tv AS p_channel_tv, "Marketing_Promotions".p_channel_radio AS p_channel_radio, "Marketing_Promotions".p_channel_press AS p_channel_press, "Marketing_Promotions".p_channel_event AS p_channel_event, "Marketing_Promotions".p_channel_demo AS p_channel_demo, "Marketing_Promotions".p_channel_details AS p_channel_details, "Marketing_Promotions".p_purpose AS p_purpose, "Marketing_Promotions".p_discount_active AS p_discount_active FROM "Marketing_Promotions" WHERE p_cost > 0 CONTEXT ('I18N' = 'us_pst');
+
+ALTER VIEW "프로모션"
+ LAYOUT ("Marketing_Promotions" = [392, 173, 200, 200]);
+

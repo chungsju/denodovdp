@@ -1,0 +1,16 @@
+﻿CREATE OR REPLACE VIEW "고객상세" FOLDER = '/03. business layer/01. 고객정보' DESCRIPTION = '고객 주소를 포함한 고객 상세 정보' 
+    PRIMARY KEY ( 'c_customer_sk' ) (
+    c_birth_day TAGS ("개인민감정보"),
+    c_birth_month TAGS ("개인민감정보"),
+    c_birth_country TAGS ("개인민감정보"),
+    c_email_address TAGS ("개인민감정보"),
+    ca_street_number TAGS ("개인민감정보"),
+    ca_street_name TAGS ("개인민감정보"),
+    ca_street_type TAGS ("개인민감정보"),
+    ca_suite_number TAGS ("개인민감정보")
+ )
+ AS SELECT customer.c_customer_sk AS c_customer_sk, customer.c_customer_id AS c_customer_id, customer.c_current_cdemo_sk AS c_current_cdemo_sk, customer.c_current_hdemo_sk AS c_current_hdemo_sk, customer.c_current_addr_sk AS c_current_addr_sk, customer.c_first_shipto_date_sk AS c_first_shipto_date_sk, customer.c_first_sales_date_sk AS c_first_sales_date_sk, customer.c_salutation AS c_salutation, customer.c_first_name AS c_first_name, customer.c_last_name AS c_last_name, customer.c_preferred_cust_flag AS c_preferred_cust_flag, customer.c_birth_day AS c_birth_day, customer.c_birth_month AS c_birth_month, customer.c_birth_year AS c_birth_year, customer.c_birth_country AS c_birth_country, customer.c_login AS c_login, customer.c_email_address AS c_email_address, customer.c_last_review_date_sk AS c_last_review_date_sk, "Customer_Address_Sheet".ca_address_sk AS ca_address_sk, "Customer_Address_Sheet".ca_address_id AS ca_address_id, "Customer_Address_Sheet".ca_street_number AS ca_street_number, "Customer_Address_Sheet".ca_street_name AS ca_street_name, "Customer_Address_Sheet".ca_street_type AS ca_street_type, "Customer_Address_Sheet".ca_suite_number AS ca_suite_number, "Customer_Address_Sheet".ca_city AS ca_city, "Customer_Address_Sheet".ca_county AS ca_county, "Customer_Address_Sheet".ca_state AS ca_state, "Customer_Address_Sheet".ca_zip AS ca_zip, "Customer_Address_Sheet".ca_country AS ca_country, "Customer_Address_Sheet".ca_gmt_offset AS ca_gmt_offset, "Customer_Address_Sheet".ca_location_type AS ca_location_type, "Customer_Address_Sheet".ca_region AS ca_region FROM customer AS customer INNER JOIN "i_Customer_Address_Sheet" AS "Customer_Address_Sheet" ON customer.c_current_addr_sk = "Customer_Address_Sheet".ca_address_sk ;
+
+ALTER VIEW "고객상세"
+ LAYOUT (customer = [518, 197, 200, 200], "i_Customer_Address_Sheet" = [860, 179, 200, 200]);
+

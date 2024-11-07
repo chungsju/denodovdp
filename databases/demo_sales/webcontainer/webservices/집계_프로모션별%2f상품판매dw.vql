@@ -1,0 +1,5 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+UNDEPLOY IF EXISTS WEBSERVICE "집계_프로모션별/상품판매DW";
+
+DEPLOY WEBSERVICE "집계_프로모션별/상품판매DW" LOGIN = '${databases.demo_sales.webcontainer.webservices.집계_프로모션별/상품판매dw.LOGIN}' PASSWORD = '${databases.demo_sales.webcontainer.webservices.집계_프로모션별/상품판매dw.PASSWORD}' ${databases.demo_sales.webcontainer.webservices.집계_프로모션별/상품판매dw.PASSWORD.ENCRYPTED};
+

@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION customer_demo_sales_household_demographics REFERENTIAL CONSTRAINT 
+FOLDER = '/99. 관계도'
+    ENDPOINT household_demographics customer PRINCIPAL (0,1)
+    ENDPOINT customer household_demographics (0,1)
+    ADD MAPPING c_current_hdemo_sk=hd_demo_sk;
+
+ALTER ASSOCIATION customer_demo_sales_household_demographics
+ LAYOUT (customer = [10, 10, 200, 200], household_demographics = [390, 19, 200, 200]);
+

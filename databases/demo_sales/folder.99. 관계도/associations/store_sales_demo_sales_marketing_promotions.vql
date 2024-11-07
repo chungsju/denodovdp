@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION "STORE_SALES_demo_sales_Marketing_Promotions" REFERENTIAL CONSTRAINT 
+FOLDER = '/99. 관계도'
+    ENDPOINT "Marketing_Promotions" "STORE_SALES" PRINCIPAL (0,1)
+    ENDPOINT "STORE_SALES" "Marketing_Promotions" (0,1)
+    ADD MAPPING "SS_PROMO_SK"=p_promo_sk;
+
+ALTER ASSOCIATION "STORE_SALES_demo_sales_Marketing_Promotions"
+ LAYOUT ("STORE_SALES" = [10, 10, 200, 200], "Marketing_Promotions" = [429, 24, 200, 200]);
+

@@ -1,0 +1,5 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+UNDEPLOY IF EXISTS WEBSERVICE "상품판매_360뷰";
+
+DEPLOY WEBSERVICE "상품판매_360뷰" LOGIN = '${databases.demo_sales.webcontainer.webservices.상품판매_360뷰.LOGIN}' PASSWORD = '${databases.demo_sales.webcontainer.webservices.상품판매_360뷰.PASSWORD}' ${databases.demo_sales.webcontainer.webservices.상품판매_360뷰.PASSWORD.ENCRYPTED};
+

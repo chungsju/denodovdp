@@ -1,0 +1,66 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC customer_address
+    FOLDER = '/02. base layer/02. crm'
+    DATASOURCENAME="DS_CRM"
+    CATALOGNAME='${databases.demo_sales.folder.02.. base layer.folder.02.. crm.views.jdbc.customer_address.CATALOGNAME}' 
+    SCHEMANAME='${databases.demo_sales.folder.02.. base layer.folder.02.. crm.views.jdbc.customer_address.SCHEMANAME}' 
+    RELATIONNAME='customer_address' 
+    OUTPUTSCHEMA (
+        ca_address_sk = 'ca_address_sk' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', description='Surrogate key (unique identifier) for the address', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        ca_address_id = 'ca_address_id' :'java.lang.String' (OPT) (sourcetypesize='4000', description='Business identifier for the address', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        ca_street_number = 'ca_street_number' :'java.lang.String' (OPT) (sourcetypesize='4000', description='Street number of the address', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        ca_street_name = 'ca_street_name' :'java.lang.String' (OPT) (sourcetypesize='4000', description='Street name of the address', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        ca_street_type = 'ca_street_type' :'java.lang.String' (OPT) (sourcetypesize='4000', description='Type of street (e.g., Avenue, Boulevard, Street)', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        ca_suite_number = 'ca_suite_number' :'java.lang.String' (OPT) (sourcetypesize='4000', description='Suite or apartment number', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        ca_city = 'ca_city' :'java.lang.String' (OPT) (sourcetypesize='4000', description='City of the address', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        ca_county = 'ca_county' :'java.lang.String' (OPT) (sourcetypesize='4000', description='County of the address', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        ca_state = 'ca_state' :'java.lang.String' (OPT) (sourcetypesize='4000', description='State or province of the address', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        ca_zip = 'ca_zip' :'java.lang.String' (OPT) (sourcetypesize='4000', description='Postal code of the address', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        ca_country = 'ca_country' :'java.lang.String' (OPT) (sourcetypesize='4000', description='Country of the address', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        ca_gmt_offset = 'ca_gmt_offset' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', description='Effective date of the address', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        ca_location_type = 'ca_location_type' :'java.lang.String' (OPT) (sourcetypesize='4000', description='Local time zone offset from GMT', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        ca_region = 'ca_region' :'java.lang.String' (OPT) (sourcetypesize='4000', description='Region of the address', sourcetypeid='12', sourcetypename='varchar')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE customer_address I18N kr (
+        ca_address_sk:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Surrogate key (unique identifier) for the address'),
+        ca_address_id:text (sourcetypeid = '12', sourcetypesize = '4000', description = 'Business identifier for the address'),
+        ca_street_number:text (sourcetypeid = '12', sourcetypesize = '4000', description = 'Street number of the address'),
+        ca_street_name:text (sourcetypeid = '12', sourcetypesize = '4000', description = 'Street name of the address'),
+        ca_street_type:text (sourcetypeid = '12', sourcetypesize = '4000', description = 'Type of street (e.g., Avenue, Boulevard, Street)'),
+        ca_suite_number:text (sourcetypeid = '12', sourcetypesize = '4000', description = 'Suite or apartment number'),
+        ca_city:text (sourcetypeid = '12', sourcetypesize = '4000', description = 'City of the address'),
+        ca_county:text (sourcetypeid = '12', sourcetypesize = '4000', description = 'County of the address'),
+        ca_state:text (sourcetypeid = '12', sourcetypesize = '4000', description = 'State or province of the address'),
+        ca_zip:text (sourcetypeid = '12', sourcetypesize = '4000', description = 'Postal code of the address'),
+        ca_country:text (sourcetypeid = '12', sourcetypesize = '4000', description = 'Country of the address'),
+        ca_gmt_offset:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Effective date of the address'),
+        ca_location_type:text (sourcetypeid = '12', sourcetypesize = '4000', description = 'Local time zone offset from GMT'),
+        ca_region:text (sourcetypeid = '12', sourcetypesize = '4000', description = 'Region of the address')
+    )
+    FOLDER = '/02. base layer/02. crm'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD customer_address(
+        I18N kr
+        CONSTRAINTS (
+             ADD ca_address_sk (any) OPT ANY
+             ADD ca_address_id (any) OPT ANY
+             ADD ca_street_number (any) OPT ANY
+             ADD ca_street_name (any) OPT ANY
+             ADD ca_street_type (any) OPT ANY
+             ADD ca_suite_number (any) OPT ANY
+             ADD ca_city (any) OPT ANY
+             ADD ca_county (any) OPT ANY
+             ADD ca_state (any) OPT ANY
+             ADD ca_zip (any) OPT ANY
+             ADD ca_country (any) OPT ANY
+             ADD ca_gmt_offset (any) OPT ANY
+             ADD ca_location_type (any) OPT ANY
+             ADD ca_region (any) OPT ANY
+        )
+        OUTPUTLIST (ca_address_id, ca_address_sk, ca_city, ca_country, ca_county, ca_gmt_offset, ca_location_type, ca_region, ca_state, ca_street_name, ca_street_number, ca_street_type, ca_suite_number, ca_zip
+        )
+        WRAPPER (jdbc customer_address)
+    );
+

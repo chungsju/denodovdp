@@ -1,0 +1,80 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC customer
+    FOLDER = '/02. base layer/02. crm'
+    DATASOURCENAME="DS_CRM"
+    CATALOGNAME='${databases.demo_sales.folder.02.. base layer.folder.02.. crm.views.jdbc.customer.CATALOGNAME}' 
+    SCHEMANAME='${databases.demo_sales.folder.02.. base layer.folder.02.. crm.views.jdbc.customer.SCHEMANAME}' 
+    RELATIONNAME='customer' 
+    OUTPUTSCHEMA (
+        c_customer_sk = 'c_customer_sk' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', description='Surrogate key (unique identifier) for the customer', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        c_customer_id = 'c_customer_id' :'java.lang.String' (OPT) (sourcetypesize='4000', description='Business identifier for the customer', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        c_current_cdemo_sk = 'c_current_cdemo_sk' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', description='Foreign key to the current demographic data of the customer', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        c_current_hdemo_sk = 'c_current_hdemo_sk' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', description='Foreign key to the current household demographic data of the customer', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        c_current_addr_sk = 'c_current_addr_sk' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', description='Foreign key to the current address of the customer', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        c_first_shipto_date_sk = 'c_first_shipto_date_sk' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', description='Surrogate key for the date the customer first received an order', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        c_first_sales_date_sk = 'c_first_sales_date_sk' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', description='Surrogate key for the date the customer made their first purchase', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        c_salutation = 'c_salutation' :'java.lang.String' (OPT) (sourcetypesize='4000', description='Salutation of the customer (e.g., Mr., Ms., Dr.)', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        c_first_name = 'c_first_name' :'java.lang.String' (OPT) (sourcetypesize='4000', description='First name of the customer', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        c_last_name = 'c_last_name' :'java.lang.String' (OPT) (sourcetypesize='4000', description='Last name of the customer', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        c_preferred_cust_flag = 'c_preferred_cust_flag' :'java.lang.String' (OPT) (sourcetypesize='4000', description='Indicator of whether the customer is a preferred customer', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        c_birth_day = 'c_birth_day' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', description='Birth day of the customer', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        c_birth_month = 'c_birth_month' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', description='Birth month of the customer', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        c_birth_year = 'c_birth_year' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', description='Birth year of the customer', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE,
+        c_birth_country = 'c_birth_country' :'java.lang.String' (OPT) (sourcetypesize='4000', description='Birth country of the customer', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        c_login = 'c_login' :'java.lang.String' (OPT) (sourcetypesize='4000', description='Login username of the customer', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        c_email_address = 'c_email_address' :'java.lang.String' (OPT) (sourcetypesize='4000', description='Email address of the customer', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        c_last_review_date_sk = 'c_last_review_date_sk' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', description='Surrogate key for the date the customer information was last reviewed or updated', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE customer I18N us_pst (
+        c_customer_sk:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Surrogate key (unique identifier) for the customer'),
+        c_customer_id:text (sourcetypeid = '12', sourcetypesize = '4000', description = 'Business identifier for the customer'),
+        c_current_cdemo_sk:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Foreign key to the current demographic data of the customer'),
+        c_current_hdemo_sk:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Foreign key to the current household demographic data of the customer'),
+        c_current_addr_sk:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Foreign key to the current address of the customer'),
+        c_first_shipto_date_sk:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Surrogate key for the date the customer first received an order'),
+        c_first_sales_date_sk:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Surrogate key for the date the customer made their first purchase'),
+        c_salutation:text (sourcetypeid = '12', sourcetypesize = '4000', description = 'Salutation of the customer (e.g., Mr., Ms., Dr.)'),
+        c_first_name:text (sourcetypeid = '12', sourcetypesize = '4000', description = 'First name of the customer') TAGS (customtag),
+        c_last_name:text (sourcetypeid = '12', sourcetypesize = '4000', description = 'Last name of the customer') TAGS (customtag),
+        c_preferred_cust_flag:text (sourcetypeid = '12', sourcetypesize = '4000', description = 'Indicator of whether the customer is a preferred customer'),
+        c_birth_day:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Birth day of the customer') TAGS ("개인민감정보"),
+        c_birth_month:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Birth month of the customer') TAGS ("개인민감정보"),
+        c_birth_year:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Birth year of the customer'),
+        c_birth_country:text (sourcetypeid = '12', sourcetypesize = '4000', description = 'Birth country of the customer') TAGS ("개인민감정보"),
+        c_login:text (sourcetypeid = '12', sourcetypesize = '4000', description = 'Login username of the customer'),
+        c_email_address:text (sourcetypeid = '12', sourcetypesize = '4000', description = 'Email address of the customer') TAGS ("개인민감정보"),
+        c_last_review_date_sk:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = 'Surrogate key for the date the customer information was last reviewed or updated')
+    )
+    FOLDER = '/02. base layer/02. crm'
+    DESCRIPTION = '고객 정보'
+    PRIMARY KEY ( 'c_customer_sk' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD customer(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD c_customer_sk (any) OPT ANY
+             ADD c_customer_id (any) OPT ANY
+             ADD c_current_cdemo_sk (any) OPT ANY
+             ADD c_current_hdemo_sk (any) OPT ANY
+             ADD c_current_addr_sk (any) OPT ANY
+             ADD c_first_shipto_date_sk (any) OPT ANY
+             ADD c_first_sales_date_sk (any) OPT ANY
+             ADD c_salutation (any) OPT ANY
+             ADD c_first_name (any) OPT ANY
+             ADD c_last_name (any) OPT ANY
+             ADD c_preferred_cust_flag (any) OPT ANY
+             ADD c_birth_day (any) OPT ANY
+             ADD c_birth_month (any) OPT ANY
+             ADD c_birth_year (any) OPT ANY
+             ADD c_birth_country (any) OPT ANY
+             ADD c_login (any) OPT ANY
+             ADD c_email_address (any) OPT ANY
+             ADD c_last_review_date_sk (any) OPT ANY
+        )
+        OUTPUTLIST (c_birth_country, c_birth_day, c_birth_month, c_birth_year, c_current_addr_sk, c_current_cdemo_sk, c_current_hdemo_sk, c_customer_id, c_customer_sk, c_email_address, c_first_name, c_first_sales_date_sk, c_first_shipto_date_sk, c_last_name, c_last_review_date_sk, c_login, c_preferred_cust_flag, c_salutation
+        )
+        WRAPPER (jdbc customer)
+    );
+

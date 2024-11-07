@@ -1,0 +1,59 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC "WEATHER_BY_ZIP"
+    FOLDER = '/02. base layer/01. sales/sales_dw'
+    DATASOURCENAME="DS_SalesDW"
+    SCHEMANAME='${databases.demo_sales.folder.02.. base layer.folder.01.. sales.folder.sales_dw.views.jdbc.weather_by_zip.SCHEMANAME}' 
+    RELATIONNAME='WEATHER_BY_ZIP' 
+    OUTPUTSCHEMA (
+        "DAILY_WEATHER_SK" = 'DAILY_WEATHER_SK' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        "FIELD_0" = 'FIELD_0' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "FIELD_1" = 'FIELD_1' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "FIELD_2" = 'FIELD_2' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='2', sourcetypename='NUMBER')  SORTABLE,
+        "FIELD_3" = 'FIELD_3' :'java.time.OffsetDateTime' (OPT) (sourcetypedecimals='7', sourcetyperadix='10', sourcetypesize='13', sourcetypeid='-101', sourcetypename='TIMESTAMP(7) WITH TIME ZONE')  SORTABLE,
+        "ZIP" = 'ZIP' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        "TEMPERATURE" = 'TEMPERATURE' :'java.lang.Double' (OPT) (sourcetyperadix='10', sourcetypesize='126', sourcetypeid='6', sourcetypename='FLOAT')  SORTABLE,
+        "WIND_SPEED" = 'WIND_SPEED' :'java.lang.Double' (OPT) (sourcetyperadix='10', sourcetypesize='126', sourcetypeid='6', sourcetypename='FLOAT')  SORTABLE,
+        "AVG_TEMP_MONTH" = 'AVG_TEMP_MONTH' :'java.lang.Double' (OPT) (sourcetyperadix='10', sourcetypesize='126', sourcetypeid='6', sourcetypename='FLOAT')  SORTABLE,
+        "AVG_WIND_MONTH" = 'AVG_WIND_MONTH' :'java.lang.Double' (OPT) (sourcetyperadix='10', sourcetypesize='126', sourcetypeid='6', sourcetypename='FLOAT')  SORTABLE,
+        "DAY_VS_MONTH_TEMP_DIFF" = 'DAY_VS_MONTH_TEMP_DIFF' :'java.lang.Double' (OPT) (sourcetyperadix='10', sourcetypesize='126', sourcetypeid='6', sourcetypename='FLOAT')  SORTABLE,
+        "TEMP_DEV" = 'TEMP_DEV' :'java.lang.Double' (OPT) (sourcetyperadix='10', sourcetypesize='126', sourcetypeid='6', sourcetypename='FLOAT')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE "WEATHER_BY_ZIP" I18N us_pst (
+        "DAILY_WEATHER_SK":text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'),
+        "FIELD_0":decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19'),
+        "FIELD_1":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        "FIELD_2":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        "FIELD_3":timestamptz (sourcetypeid = '2014', sourcetyperadix = '10', sourcetypedecimals = '7', sourcetypesize = '13'),
+        "ZIP":text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'),
+        "TEMPERATURE":double (sourcetypeid = '8', sourcetyperadix = '10', sourcetypesize = '126'),
+        "WIND_SPEED":double (sourcetypeid = '8', sourcetyperadix = '10', sourcetypesize = '126'),
+        "AVG_TEMP_MONTH":double (sourcetypeid = '8', sourcetyperadix = '10', sourcetypesize = '126'),
+        "AVG_WIND_MONTH":double (sourcetypeid = '8', sourcetyperadix = '10', sourcetypesize = '126'),
+        "DAY_VS_MONTH_TEMP_DIFF":double (sourcetypeid = '8', sourcetyperadix = '10', sourcetypesize = '126'),
+        "TEMP_DEV":double (sourcetypeid = '8', sourcetyperadix = '10', sourcetypesize = '126')
+    )
+    FOLDER = '/02. base layer/01. sales/sales_dw'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD "WEATHER_BY_ZIP"(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD "DAILY_WEATHER_SK" (any) OPT ANY
+             ADD "FIELD_0" (any) OPT ANY
+             ADD "FIELD_1" (any) OPT ANY
+             ADD "FIELD_2" (any) OPT ANY
+             ADD "FIELD_3" (any) OPT ANY
+             ADD "ZIP" (any) OPT ANY
+             ADD "TEMPERATURE" (any) OPT ANY
+             ADD "WIND_SPEED" (any) OPT ANY
+             ADD "AVG_TEMP_MONTH" (any) OPT ANY
+             ADD "AVG_WIND_MONTH" (any) OPT ANY
+             ADD "DAY_VS_MONTH_TEMP_DIFF" (any) OPT ANY
+             ADD "TEMP_DEV" (any) OPT ANY
+        )
+        OUTPUTLIST ("AVG_TEMP_MONTH", "AVG_WIND_MONTH", "DAILY_WEATHER_SK", "DAY_VS_MONTH_TEMP_DIFF", "FIELD_0", "FIELD_1", "FIELD_2", "FIELD_3", "TEMPERATURE", "TEMP_DEV", "WIND_SPEED", "ZIP"
+        )
+        WRAPPER (jdbc "WEATHER_BY_ZIP")
+    );
+

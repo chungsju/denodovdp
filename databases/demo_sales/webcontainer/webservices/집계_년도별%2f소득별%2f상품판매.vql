@@ -1,0 +1,5 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+UNDEPLOY IF EXISTS WEBSERVICE "집계_년도별/소득별/상품판매";
+
+DEPLOY WEBSERVICE "집계_년도별/소득별/상품판매" LOGIN = '${databases.demo_sales.webcontainer.webservices.집계_년도별/소득별/상품판매.LOGIN}' PASSWORD = '${databases.demo_sales.webcontainer.webservices.집계_년도별/소득별/상품판매.PASSWORD}' ${databases.demo_sales.webcontainer.webservices.집계_년도별/소득별/상품판매.PASSWORD.ENCRYPTED};
+

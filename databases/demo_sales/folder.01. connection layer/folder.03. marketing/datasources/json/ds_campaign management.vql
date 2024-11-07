@@ -1,0 +1,13 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE JSON "DS_Campaign Management"
+    FOLDER = '/01. connection layer/03. marketing'
+    ROUTE HTTP 'http.ApacheHttpClientConnection,120000' GET '${databases.demo_sales.folder.01.. connection layer.folder.03.. marketing.datasources.json.ds_campaign management.ROUTE.HTTP.URL}'
+    AUTHENTICATION BASIC ( 
+      USER '${databases.demo_sales.folder.01.. connection layer.folder.03.. marketing.datasources.json.ds_campaign management.ROUTE.HTTP.USER}'
+      PASSWORD '${databases.demo_sales.folder.01.. connection layer.folder.03.. marketing.datasources.json.ds_campaign management.ROUTE.HTTP.PASSWORD}' ${databases.demo_sales.folder.01.. connection layer.folder.03.. marketing.datasources.json.ds_campaign management.ROUTE.HTTP.PASSWORD.ENCRYPTED} )
+    PROXY OFF
+    DATA_INFRASTRUCTURE (
+        PROVIDER = '${databases.demo_sales.folder.01.. connection layer.folder.03.. marketing.datasources.json.ds_campaign management.INFRASTRUCTURE.PROVIDER}'
+        REGION = '${databases.demo_sales.folder.01.. connection layer.folder.03.. marketing.datasources.json.ds_campaign management.INFRASTRUCTURE.REGION}'
+    );
+

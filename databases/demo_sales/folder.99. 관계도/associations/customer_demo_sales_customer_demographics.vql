@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION customer_demo_sales_customer_demographics REFERENTIAL CONSTRAINT 
+FOLDER = '/99. 관계도'
+    ENDPOINT customer_demographics customer PRINCIPAL (0,1)
+    ENDPOINT customer customer_demographics (0,1)
+    ADD MAPPING c_current_cdemo_sk=cd_demo_sk;
+
+ALTER ASSOCIATION customer_demo_sales_customer_demographics
+ LAYOUT (customer = [10, 10, 200, 200], customer_demographics = [310, 18, 200, 200]);
+

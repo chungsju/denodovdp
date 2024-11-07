@@ -1,0 +1,28 @@
+ALTER ROLE "ROLE_개인정보취급자"
+GRANT METADATA, EXECUTE ON demo_sales;
+
+ALTER ROLE "ROLE_데모VDB권한"
+GRANT ROLE data_catalog_assisted_query,data_catalog_data_preparation,data_catalog_classifier,data_catalog_editor,"catalog sales",data_catalog_admin,data_catalog_content_admin,data_catalog_exporter,data_catalog_manager,selfserviceadmin,selfserviceexporter,use_large_language_model
+GRANT CONNECT, CREATE, CREATE_DATA_SOURCE, CREATE_DATA_SERVICE, CREATE_VIEW, CREATE_FOLDER, METADATA, EXECUTE ON demo_sales;
+
+ALTER ROLE role1
+GRANT ROLE data_catalog_admin,data_catalog_assisted_query,data_catalog_classifier,data_catalog_content_admin,data_catalog_data_preparation,data_catalog_editor,data_catalog_exporter,data_catalog_manager
+GRANT ADMIN ON demo_sales;
+
+ALTER USER demouser1
+GRANT CONNECT, CREATE, CREATE_DATA_SOURCE, CREATE_DATA_SERVICE, CREATE_VIEW, CREATE_FOLDER, METADATA, EXECUTE, WRITE ON demo_sales
+GRANT METADATA, WRITE ON demo_sales."p_ITEM"
+GRANT METADATA, WRITE ON demo_sales."p_ITEM2"
+GRANT METADATA, WRITE ON demo_sales."상품판매_360뷰"
+GRANT METADATA, WRITE ON WEBSERVICE demo_sales."상품판매_360뷰"
+GRANT METADATA, WRITE ON WEBSERVICE demo_sales."집계_프로모션별/상품판매DW";
+
+ALTER USER demouser1
+GRANT METADATA, WRITE ON demo_sales."p_ITEM";
+
+ALTER USER demouser1
+GRANT METADATA, WRITE ON demo_sales."p_ITEM2";
+
+ALTER USER demouser1
+GRANT METADATA, WRITE ON demo_sales."상품판매_360뷰";
+
