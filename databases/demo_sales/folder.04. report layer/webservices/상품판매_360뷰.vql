@@ -164,7 +164,6 @@
         VIEW "집계_프로모션별/상품판매DW" FIELDS (
             p_promo_sk : 'int', 
             p_promo_name : 'text', 
-            "I_ITEM_ID" : 'text', 
             "I_ITEM_DESC" : 'text', 
             total_sales_price : 'decimal', 
             promotion_item_rank : 'long'

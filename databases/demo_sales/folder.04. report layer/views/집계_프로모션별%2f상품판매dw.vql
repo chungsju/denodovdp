@@ -1,2 +1,28 @@
-﻿CREATE OR REPLACE VIEW "집계_프로모션별/상품판매DW" FOLDER = '/04. report layer' DESCRIPTION = '프로모션 ID별 상품 판매 Rank'  AS SELECT "프로모션".p_promo_sk AS p_promo_sk, "프로모션".p_promo_name AS p_promo_name, "상점_상품판매_DW"."I_ITEM_ID" AS "I_ITEM_ID", "상점_상품판매_DW"."I_ITEM_DESC" AS "I_ITEM_DESC", "상점_상품판매_DW".total_sales_price, "상점_상품판매_DW".promotion_item_rank FROM "프로모션" AS "프로모션" INNER JOIN (SELECT "상점_상품판매_DW"."I_ITEM_DESC", "상점_상품판매_DW"."I_ITEM_ID", "상점_상품판매_DW"."SS_PROMO_SK", sum("상점_상품판매_DW"."SS_SALES_PRICE") AS total_sales_price, rank() OVER ( PARTITION BY "상점_상품판매_DW"."SS_PROMO_SK" ORDER BY sum("상점_상품판매_DW"."SS_SALES_PRICE") DESC ) AS promotion_item_rank FROM "상점_상품판매_DW" WHERE "SS_SALES_PRICE" > 0 GROUP BY "상점_상품판매_DW"."I_ITEM_DESC", "상점_상품판매_DW"."SS_PROMO_SK", "상점_상품판매_DW"."I_ITEM_ID") AS "상점_상품판매_DW" ON "프로모션".p_promo_sk = "상점_상품판매_DW"."SS_PROMO_SK"  ORDER BY "프로모션".p_promo_id ASC, promotion_item_rank ASC CONTEXT ('I18N' = 'us_pst');
+﻿CREATE OR REPLACE VIEW "집계_프로모션별/상품판매DW" FOLDER = '/04. report layer' DESCRIPTION = '프로모션 ID별 상품 판매 Rank'  AS
+    SELECT "프로모션".p_promo_sk AS p_promo_sk,
+           "프로모션".p_promo_name AS p_promo_name,
+           "상점_상품판매_DW"."I_ITEM_ID" AS "I_ITEM",
+           "상점_상품판매_DW"."I_ITEM_DESC" AS "I_ITEM_DESC",
+           "상점_상품판매_DW".total_sales_price,
+           "상점_상품판매_DW".promotion_item_rank
+    FROM "프로모션" AS "프로모션"
+         INNER JOIN (
+             SELECT "상점_상품판매_DW"."I_ITEM_DESC",
+                    "상점_상품판매_DW"."I_ITEM_ID",
+                    "상점_상품판매_DW"."SS_PROMO_SK",
+                    sum("상점_상품판매_DW"."SS_SALES_PRICE") AS total_sales_price,
+                    rank() OVER(
+                        PARTITION BY "상점_상품판매_DW"."SS_PROMO_SK"
+                        ORDER BY sum("상점_상품판매_DW"."SS_SALES_PRICE") DESC
+                    ) AS promotion_item_rank
+             FROM "상점_상품판매_DW"
+             WHERE "SS_SALES_PRICE" > 0
+             GROUP BY "상점_상품판매_DW"."I_ITEM_DESC",
+                      "상점_상품판매_DW"."SS_PROMO_SK",
+                      "상점_상품판매_DW"."I_ITEM_ID"
+         ) AS "상점_상품판매_DW"
+             ON "프로모션".p_promo_sk = "상점_상품판매_DW"."SS_PROMO_SK"
+    ORDER BY "프로모션".p_promo_id ASC,
+             promotion_item_rank ASC
+    CONTEXT ('I18N' = 'us_pst', 'formatted' = 'yes');
 

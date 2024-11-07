@@ -1,6 +1,9 @@
 ﻿1/databases/demo_sales/folder.99. 관계도/99. 관계도.vql
+1/tags/customtag.vql
 1/tags/개인민감정보.vql
 */databases/demo_sales/folder.04. report layer/04. report layer.vql
+*/tags/customtag.vql
+*/tags/개인민감정보.vql
 */databases/demo_sales/folder.03. business layer/03. business layer.vql
 */databases/demo_sales/folder.03. business layer/folder.03. 프로모션/03. 프로모션.vql
 */databases/demo_sales/folder.02. base layer/02. base layer.vql
@@ -8,7 +11,6 @@
 */databases/demo_sales/folder.02. base layer/folder.03. marketing/views/marketing_promotions.vql
 */databases/demo_sales/folder.03. business layer/folder.03. 프로모션/views/프로모션.vql
 */databases/demo_sales/folder.03. business layer/folder.02. 상점 판매/02. 상점 판매.vql
-*/tags/customtag.vql
 */databases/demo_sales/folder.02. base layer/folder.01. sales/01. sales.vql
 */databases/demo_sales/folder.02. base layer/folder.01. sales/folder.sales_dw/sales_dw.vql
 */databases/demo_sales/folder.01. connection layer/01. connection layer.vql
@@ -21,7 +23,6 @@
 1/databases/demo_sales/folder.04. report layer/views/집계_프로모션별%2f상품판매dw.vql
 1/databases/demo_sales/folder.03. business layer/folder.02. 상점 판매/views/상점_상품판매_dw.vql
 */databases/demo_sales/folder.03. business layer/folder.01. 고객정보/01. 고객정보.vql
-*/tags/개인민감정보.vql
 */databases/demo_sales/folder.02. base layer/folder.02. crm/02. crm.vql
 */databases/demo_sales/folder.01. connection layer/folder.02. crm/02. crm.vql
 */databases/demo_sales/folder.01. connection layer/folder.02. crm/datasources/jdbc/ds_crm.vql
